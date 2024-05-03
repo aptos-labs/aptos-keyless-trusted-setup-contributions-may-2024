@@ -60,20 +60,20 @@ npx snarkjs@0.6.11 powersoftau verify powersOfTau28_hez_final_21.ptau -v
 
 # Reproducing the .r1cs file
 
-To reproduce `main.r1cs`, clone the [Aptos Keyless Circuit Repo](https://github.com/aptos-labs/aptos-keyless-circuit), checkout commit `2a1d445a49d212fa55c322e6f3373631bc74140a`, and run the following commands:
+To reproduce `main.r1cs`, clone the [Aptos Core Repo](https://github.com/aptos-labs/aptos-core), checkout commit `39f9c44b4342ed5e6941fae36cf6c87c52b1e17f`, and run the following commands:
 
 ```
-cd templates
+cd keyless/circuit-data/templates
 circom -l . main.circom --r1cs
 ```
 
 The `b2sum` hash of the resulting `main.r1cs` file should be 
 
 ```
-18d68f469a6ead62aafcc9c78fa1b99b4391b9a5acfca2be62722503684f98ba3d84a764d2aa9143898797bf33ab0e4c9fb2584e2afa660e0100cc8af7eb5226
+9e9bb596c7a453521e9b8df1dbd82c0bad5788f2679f8c53a6bc6112b9ec6061fea36547efa649ba9af78f6792ecd639a654ea6a1d11553b1ce93998924b3ac2
 ```
 
-which is identical to the `b2sum` hash of `main.r1cs` in this repo.
+which is identical to the `b2sum` hash of `main_39f9c44b4342ed5e6941fae36cf6c87c52b1e17f.r1cs` in this repo.
 
 This provides a link between our circuit code and the trusted setup, ensuring you can verify the setup was done over the correct codebase. Without this link, you could not know what circuit the setup was done over, making it potentially insecure. 
 
@@ -88,7 +88,7 @@ npx snarkjs@0.6.11 groth16 setup main.r1cs ./powersOfTau28_hez_final_21.ptau ini
 The `b2sum` hash of the resulting `.zkey` file should match that of `contributions/main_00000.zkey`. This hash value is
 
 ```
-d10eb2e278167011a7a205bdf3888d7df1723c8079243a81156092459b9f7341597aeba719187d82d11bfa16b3cba0955260520477d3094c2ffc7dbc99d2f0fa
+8381954aa98bc7c7e11fd1f74f544320937f291fd1ce83cfc2a227c805b69de5362781c2484b125c600591cb54a34da56c0911f9a0fea066636f5c79ddbcc3c4
 ```
 
 
@@ -104,7 +104,7 @@ Each contribution may be verified by running the command
 npx snarkjs@0.6.11 zkey verify main.r1cs powersOfTau28_hez_final_21.ptau contributions/<contribution_filename>.zkey -v
 ```
 
-Depending on your machine, this commands can take upwards of 20 minutes. Upon completion, it will produce an output of the following form: 
+Depending on your machine, this command can take upwards of 20 minutes. Upon completion, it will produce an output of the following form: 
 
 ```
 [INFO]  snarkJS: Circuit Hash: 
@@ -149,17 +149,16 @@ Note that the contribution hash is not simply a hash of the `.zkey` file, but a 
 To eliminate potential bias, we apply the [Drand randomness beacon](https://drand.love/) to the final `.zkey` file to obtain our final `.zkey` file for use in production. To regenerate our randomness, first [follow the instructions here](https://drand.love/developer/drand-client/#installation) and then run
 
 ```
-./drand-client --round 3793809 \
+./drand-client --round 3977904 \
 --chain-hash 8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce \
 --url http://api.drand.sh \
 --relay /dnsaddr/api.drand.sh
-3793809	da44fdb1c88a25fd68d8581e077dd9e4d6d4c8af22c30b127a23dd8343995565
 ```
 
-which should output round number `3793809` and randomness
+which should output round number `3977904` and randomness
 
 ```
-da44fdb1c88a25fd68d8581e077dd9e4d6d4c8af22c30b127a23dd8343995565
+897783163d9f6d305b57b5a47e856a31cd6ee33c9dc8d56d0a59579def57558a
 ```
 
 You can recreate the final `.zkey` file by running
@@ -187,7 +186,7 @@ npx snarkjs@0.6.11 zkey verify main.r1cs powersOfTau28_hez_final_21.ptau main_fi
 The `b2sum` hash of the resulting `main_final.zkey` should be 
 
 ```
-6f603ff9f8cb0d66fa6c86531fae6a7e1b73b9ccfa6bb42f4c2e64bbf6e65f1e6994ace9ad84b21338c19242125123cf066db74b6fdd65bf8dd219f1d55e10e9
+07ee7c4de536efe9866a351001698ffdd2bd377b148bec67e4adadd1bb1d3e09ce7b2f07e68ba207f339e4ee8e44335f9c2c574c07d51aa0283dcc8cb65ad992
 ```
 
 which is identical to the `b2sum` hash of `contributions/main_final.zkey`.
@@ -203,7 +202,7 @@ npx snarkjs@0.6.11 zkey export verificationkey contributions/main_final.zkey ver
 Its `b2sum` hash is
 
 ```
-e1b963bac4c8f58b91e35b8695e72c0872e4fcd112f732450b03087088b7edf276d9ea8047f91df730a374a1d04fffcea04e3ace0a45c56e29f92950bcfdca0d
+57e3e3f7f9a43566b64eef59b8ce868b3c55c12c6ee0b52660006067bbe98c51d20644334d8ae587f54736f6a8b81a539b23017b0abeb3d03046d893faaa691b
 ```
 
 This should be identical to the `verification_key.vkey` file already in the repo.
