@@ -209,4 +209,37 @@ This should be identical to the `verification_key.vkey` file already in the repo
 
 # Participant List
 
-The list of participants who both completed their contribution and consented to have their identity listed are presented below. We would like to sincerely thank both them and those who have chosen to remain anonymous for contributing to the security of Aptos Keyless. # aptos-keyless-trusted-setup-contributions-may-2024
+The list of participants who both completed their contribution and consented to have their identity listed are presented below. We would like to sincerely thank both them and those who have chosen to remain anonymous for contributing to the security of Aptos Keyless. 
+
+# aptos-keyless-trusted-setup-contributions-may-2024
+
+Daniel Porteous (dport)
+Maykon Michel Palma
+Max Kaplan
+Rasa Welcher
+Greg Nazario
+Rustie Lin
+Rati Gelashvili
+zhoujunma
+Sherry Xiao
+Maayan
+Michael Straka
+None
+Zekun Li
+Alyssa Ponzo
+Artsiom Holikau
+Philip Vu
+Eric Carlson
+darren
+schultzie
+Gabriele Della Casa Venturelli
+None
+John Youngseok Yang
+Alin Tomescu
+Avery Ching
+Oliver He
+Kobi Gurkan
+jill
+Angie Huang
+Rex Fernando
+Aleks Zi
