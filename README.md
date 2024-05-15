@@ -9,9 +9,9 @@ To download the large `.r1cs`, `.ptau`, and `.zkey` files in this repo, [install
 Then run the following commands to clone the repo without the larger files:
 
 ```
-GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/aptos-labs/aptos-keyless-trusted-setup-contributions
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/aptos-labs/aptos-keyless-trusted-setup-contributions-may-2024
 
-cd aptos-keyless-trusted-setup-contributions
+cd aptos-keyless-trusted-setup-contributions-may-2024
 ```
 
 To get a specific file `<filename>`, run
@@ -213,6 +213,7 @@ The list of participants who both completed their contribution and consented to 
 
 # aptos-keyless-trusted-setup-contributions-may-2024
 
+```
 Daniel Porteous (dport)
 Maykon Michel Palma
 Max Kaplan
@@ -243,3 +244,4 @@ jill
 Angie Huang
 Rex Fernando
 Aleks Zi
+```
