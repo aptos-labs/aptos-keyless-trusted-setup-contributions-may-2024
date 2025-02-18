@@ -63,8 +63,11 @@ npx snarkjs@0.6.11 powersoftau verify powersOfTau28_hez_final_21.ptau -v
 To reproduce `main.r1cs`, clone the [Aptos Core Repo](https://github.com/aptos-labs/aptos-core), checkout commit `39f9c44b4342ed5e6941fae36cf6c87c52b1e17f`, and run the following commands:
 
 ```
+git clone https://github.com/aptos-labs/aptos-core
+git checkout 39f9c44b4342ed5e6941fae36cf6c87c52b1e17f
 cd keyless/circuit-data/templates
 circom -l . main.circom --r1cs
+b2sum main.r1cs
 ```
 
 The `b2sum` hash of the resulting `main.r1cs` file should be 
