@@ -31,10 +31,18 @@ nvm use 18
 and
 
 ```
+git clone https://github.com/iden3/circom
+cd circom/
+git switch -d v2.1.7
+cargo build --release
+cargo install --path circom
+
+npm install -g circomlib@2.0.5
+
 npm install snarkjs@0.6.11
 ```
 
-to install the version of `snarkjs` used by our code which was used to run the setup ceremony. 
+to install the version of `circom`, `circomlib` and `snarkjs` used by our code which was used to run the setup ceremony. 
 
 To verify the hash values of various files presented in this document, ensure [Homebrew is installed](https://docs.brew.sh/Installation) and run 
 
@@ -60,13 +68,14 @@ npx snarkjs@0.6.11 powersoftau verify powersOfTau28_hez_final_21.ptau -v
 
 # Reproducing the .r1cs file
 
-To reproduce `main.r1cs`, clone the [Aptos Core Repo](https://github.com/aptos-labs/aptos-core), checkout commit `39f9c44b4342ed5e6941fae36cf6c87c52b1e17f`, and run the following commands:
+You can reproduce the `main.r1cs` hash by cloning the [keyless-zk-proofs](https://github.com/aptos-labs/keyless-zk-proofs) tag `circuit-v1.0.0` via the following commands:
 
 ```
-git clone https://github.com/aptos-labs/aptos-core
-git checkout 39f9c44b4342ed5e6941fae36cf6c87c52b1e17f
-cd keyless/circuit-data/templates
-circom -l . main.circom --r1cs
+git clone https://github.com/aptos-labs/keyless-zk-proofs
+cd keyless-zk-proofs/
+git checkout circuit-v1.0.0
+cd circuit/
+circom -l `npm root -g` templates/main.circom --r1cs
 b2sum main.r1cs
 ```
 
